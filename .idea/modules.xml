@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/cloud_based_spreadsheet.iml" filepath="$PROJECT_DIR$/.idea/cloud_based_spreadsheet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/main_folder/main_folder.iml" filepath="$PROJECT_DIR$/main_folder/main_folder.iml" />
     </modules>
   </component>
 </project>
