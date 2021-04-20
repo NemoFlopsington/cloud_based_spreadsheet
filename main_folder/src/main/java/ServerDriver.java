@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class ServerDriver {
     ServerSocket serverSocket;
 
-    public static void main(String[] args) throws IOException, SQLException {
+    public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException {
         ServerSocket serverSocket = new ServerSocket(8666);
         System.out.println("Server started");
         String conString = "jdbc:mysql://g84t6zfpijzwx08q.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306";
@@ -20,6 +20,7 @@ public class ServerDriver {
             Socket socket = serverSocket.accept( );
             ObjectInputStream fromClient = (ObjectInputStream) socket.getInputStream();
             ObjectOutputStream toClient = (ObjectOutputStream) socket.getOutputStream();
+            System.out.println("Client connected");
 
             //operation is an int
             //0 = load file given path
@@ -39,7 +40,13 @@ public class ServerDriver {
                 }
             }
             else if (operation == 1)    {
+                //save file to path
                 ArrayList<Cell> cells = new ArrayList<>();
+                //accept path from client
+                do {
+                    cells.add((Cell) fromClient.readObject());
+                } while(cells.get(cells.size()).row_column != "-1");
+
 
             }
 
